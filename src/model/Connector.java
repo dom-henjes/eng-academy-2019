@@ -3,6 +3,7 @@ package model;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import org.jdbi.v3.core.Jdbi;
@@ -39,8 +40,9 @@ public class Connector {
 				System.err.println("Failed to find config file for DB connection.");
 			} catch (IOException e) {
 				System.err.println("Config file for DB connection could not be loaded properly.");
+			} catch (SQLException e) {
+				System.out.println("Database could not be reached. Please try again later or contact Database Administrator");
 			}
-			
 		}
 		return conn;
 	}
