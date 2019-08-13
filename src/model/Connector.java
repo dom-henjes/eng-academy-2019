@@ -32,7 +32,7 @@ public class Connector {
 					throw new IOException();
 				}
 				
-				Jdbi jdbi = Jdbi.create("jdbc:mysql://" + host + "/world", password, user);
+				Jdbi jdbi = Jdbi.create("jdbc:mysql://" + host + "/jarcompany", user, password);
 				jdbi.installPlugin(new SqlObjectPlugin());
 				conn = jdbi;
 			} catch (FileNotFoundException e) {
