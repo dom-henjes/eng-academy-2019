@@ -16,7 +16,7 @@ public class Connector {
 		// expand here
 	}
 	
-	private Jdbi getConnector() {
+	public static Jdbi getConnector() {
 		if (conn == null) {
 			try {
 				FileInputStream propsStream = new FileInputStream("employeesdb.properties");
