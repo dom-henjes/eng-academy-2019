@@ -66,6 +66,8 @@ public class CommandInsertEmployee implements Command {
 	    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
 	    	
 	    	companyMapper.insertEmployee(emp);
+	    	
+	    	return "";
 	    });
 	    
 		
