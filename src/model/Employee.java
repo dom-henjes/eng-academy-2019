@@ -9,8 +9,18 @@ public class Employee {
 	private String bankAccount;
 	private String sortcode;
 	private float startingSalary;
-	private int employeeNUmber;
-	private String department;
+	private int employeeNumber;
+	
+	public Employee(String name, String address, String email, String NI, String bankAccount,
+			String sortCode, float startingSalary) {
+		this.setName(name);
+		this.setAddress(address);
+		this.setEmail(email);
+		this.setNI(NI);
+		this.setBankAccount(bankAccount);
+		this.setSortcode(sortCode);
+		this.setStartingSalary(startingSalary);
+	}
 	
 	public String getName() {
 		return name;
@@ -68,20 +78,12 @@ public class Employee {
 		this.startingSalary = startingSalary;
 	}
 
-	public int getEmployeeNUmber() {
-		return employeeNUmber;
+	public int getEmployeeNumber() {
+		return employeeNumber;
 	}
 
-	public void setEmployeeNUmber(int employeeNUmber) {
-		this.employeeNUmber = employeeNUmber;
-	}
-
-	private String getDepartment() {
-		return department;
-	}
-
-	private void setDepartment(String department) {
-		this.department = department;
+	public void setEmployeeNumber(int employeeNumber) {
+		this.employeeNumber = employeeNumber;
 	}
 
 }
