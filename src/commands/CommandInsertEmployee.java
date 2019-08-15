@@ -71,6 +71,8 @@ public class CommandInsertEmployee implements Command {
 			System.out.println("Starting salary must be a numerical value.");
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			System.out.println("Now returning to beginning prompt.");
 		}
 		return "";
 	}
