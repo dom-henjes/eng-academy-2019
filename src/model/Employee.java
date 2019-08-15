@@ -10,7 +10,6 @@ public class Employee {
 	private String sortcode;
 	private float startingSalary;
 	private int employeeNUmber;
-	private String department;
 	
 	public String getName() {
 		return name;
@@ -74,14 +73,6 @@ public class Employee {
 
 	public void setEmployeeNUmber(int employeeNUmber) {
 		this.employeeNUmber = employeeNUmber;
-	}
-
-	private String getDepartment() {
-		return department;
-	}
-
-	private void setDepartment(String department) {
-		this.department = department;
 	}
 
 }
