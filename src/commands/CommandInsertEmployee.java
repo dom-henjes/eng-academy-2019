@@ -50,10 +50,14 @@ public class CommandInsertEmployee implements Command {
 		    System.out.println("Enter employee  sortcode ");
 		    String sortCode = scanner.nextLine();
 		    emp.setSortcode(sortCode);
-		    
+
 		    System.out.println("Enter employee  starting salary ");
 		    String startingSalary = scanner.nextLine();
 		    emp.setStartingSalary(Float.parseFloat(startingSalary));
+
+		    System.out.println("Enter employee  starting department (Sales/Manufacturing/Accounting) ");
+		    String startingDepartment = scanner.nextLine();
+		    emp.setDepartment(startingDepartment);
 		    
 		    
 		    int success = jdbi.withHandle(handle -> {

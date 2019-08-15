@@ -12,6 +12,7 @@ public class Employee {
 	public String sortcode;
 	public float startingSalary;
 	public int employeeNumber;
+	public int departmentID;
 	
 	public Employee(String name, String address, String email, String NI, String bankAccount,
 			String sortCode, float startingSalary) throws IOException {
@@ -134,6 +135,22 @@ public class Employee {
 
 	public void setEmployeeNumber(int employeeNumber) {
 		this.employeeNumber = employeeNumber;
+	}
+	
+	public int getDepartmentID() {
+		return departmentID;
+	}
+	
+	public void setDepartment(String department) throws IOException {
+		if (department.toLowerCase().equals("sales")) {
+			departmentID = 1;
+		} else if (department.toLowerCase().equals("accounting")) {
+			departmentID = 2;
+		} else if (department.toLowerCase().equals("manufacturing")) {
+			departmentID = 3;
+		} else {
+			throw new IOException("Invalid department name");
+		}
 	}
 
 }
