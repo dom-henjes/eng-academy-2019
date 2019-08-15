@@ -1,6 +1,7 @@
 package model;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Employee {
 	
@@ -12,6 +13,7 @@ public class Employee {
 	public String sortcode;
 	public float startingSalary;
 	public int employeeNumber;
+	public int departmentID;
 	
 	public Employee(String name, String address, String email, String NI, String bankAccount,
 			String sortCode, float startingSalary) throws IOException {
@@ -74,7 +76,12 @@ public class Employee {
 
 	public void setNI(String nI) throws IOException {
 		if (nI.length() == 9) {
-			this.NI = nI;
+			if (nI.toUpperCase().matches("^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D]{0,1}$")) {
+				this.NI = nI.toUpperCase();
+			} else {
+				throw new IOException("That is not a valid national insurance number");
+			}
+		
 		} else {
 			throw new IOException("NI must have length 9.");
 		}
@@ -129,6 +136,24 @@ public class Employee {
 
 	public void setEmployeeNumber(int employeeNumber) {
 		this.employeeNumber = employeeNumber;
+	}
+	
+	public int getDepartmentID() {
+		return departmentID;
+	}
+	
+	public void setDepartment(String department, List<Department> depList) throws IOException {
+		boolean flag = false;
+		
+		for (Department d: depList) {
+			if (d.getName().toLowerCase().equals(department.toLowerCase())) {
+				flag = true;
+				departmentID = d.getID();
+			}
+		}
+		if (!flag) {
+			throw new IOException("Invalid department name");
+		}
 	}
 
 }

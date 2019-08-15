@@ -1,6 +1,7 @@
 package commands;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import org.jdbi.v3.core.Jdbi;
@@ -9,6 +10,7 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import data.CompanyMapper;
 import model.Connector;
 import model.Employee;
+import model.Department;
 
 public class CommandInsertEmployee implements Command {
 
@@ -50,16 +52,31 @@ public class CommandInsertEmployee implements Command {
 		    System.out.println("Enter employee  sortcode ");
 		    String sortCode = scanner.nextLine();
 		    emp.setSortcode(sortCode);
-		    
+
 		    System.out.println("Enter employee  starting salary ");
 		    String startingSalary = scanner.nextLine();
 		    emp.setStartingSalary(Float.parseFloat(startingSalary));
+
+		    List<Department> depList = jdbi.withHandle(handle -> {
+		    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
+		    	
+		    	return companyMapper.getDepartments();
+		    });
+		    System.out.println("Enter employee starting department from list: ");
+		    String deps = "";
+		    for (Department d: depList) {
+		    	deps = deps + d.getName() + ", " ;
+		    }
+		    System.out.println(deps);
+		    String startingDepartment = scanner.nextLine();
+		    emp.setDepartment(startingDepartment, depList);
 		    
 		    
 		    int success = jdbi.withHandle(handle -> {
 		    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
 		    	
-		    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(), emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary());
+		    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(),
+		    			emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary(), emp.getDepartmentID());
 		    	
 		    });
 		    

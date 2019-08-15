@@ -29,3 +29,4 @@ INSERT INTO Employee (Name,Address,Email,NI,accountNumber,sortCode,startingSalar
 VALUES ('Bruce Wayne','Boston','rnd@kainos.com','12345678','SS12345C','42060','50000', 1);
 
 SELECT * FROM Employee;
+SELECT * FROM Department;
