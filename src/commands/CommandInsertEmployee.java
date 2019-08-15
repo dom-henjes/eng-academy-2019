@@ -1,5 +1,6 @@
 package commands;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.jdbi.v3.core.Jdbi;
@@ -24,56 +25,54 @@ public class CommandInsertEmployee implements Command {
 		Scanner scanner = new Scanner(System.in);
 
 		try {
-	    System.out.println("Enter employee  name ");
-	    
-	    String name = scanner.nextLine();
-	    
-	    System.out.println("Enter employee  address ");
-	    
-	    String address = scanner.nextLine();
-	    
-	    System.out.println("Enter employee  email ");
-	    
-	    String email = scanner.nextLine();
-	    
-	    System.out.println("Enter employee  ni ");
-	    
-	    String ni = scanner.nextLine();
-	    
-	    System.out.println("Enter employee  accountNr ");
-	    
-	    String accountNr = scanner.nextLine();
-	    
-	    System.out.println("Enter employee  sortcode ");
-	    
-	    String sortCode = scanner.nextLine();
-	    
-	    System.out.println("Enter employee  starting salary ");
-	    
-	    String startingSalary = scanner.nextLine();
-	    
-	    
-	    Employee emp = new Employee();
-	    emp.setName(name);
-	    emp.setAddress(address);
-	    emp.setEmail(email);
-	    emp.setNI(ni);
-	    emp.setBankAccount(accountNr);
-	    emp.setSortcode(sortCode);
-	    emp.setStartingSalary(Float.parseFloat(startingSalary));
-	    
-	    int success = jdbi.withHandle(handle -> {
-	    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
-	    	
-	    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(), emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary());
-	    	
-	    });
-	    
-	    System.out.println("Success: " + success);
+
+		    Employee emp = new Employee();
+		    System.out.println("Enter employee  name ");
+		    String name = scanner.nextLine();
+		    emp.setName(name);
+		    
+		    System.out.println("Enter employee  address ");
+		    String address = scanner.nextLine();
+		    emp.setAddress(address);
+		    
+		    System.out.println("Enter employee  email ");
+		    String email = scanner.nextLine();
+		    emp.setEmail(email);
+		    
+		    System.out.println("Enter employee  ni ");
+		    String ni = scanner.nextLine();
+		    emp.setNI(ni);
+		    
+		    System.out.println("Enter employee  accountNr ");
+		    String accountNr = scanner.nextLine();
+		    emp.setBankAccount(accountNr);
+		    
+		    System.out.println("Enter employee  sortcode ");
+		    String sortCode = scanner.nextLine();
+		    emp.setSortcode(sortCode);
+		    
+		    System.out.println("Enter employee  starting salary ");
+		    String startingSalary = scanner.nextLine();
+		    emp.setStartingSalary(Float.parseFloat(startingSalary));
+		    
+		    
+		    int success = jdbi.withHandle(handle -> {
+		    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
+		    	
+		    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(), emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary());
+		    	
+		    });
+		    
+		    System.out.println("Success: " + success);
 		
-		}
-		catch(Exception e) {
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (NumberFormatException e) {
+			System.out.println("Starting salary must be a numerical value.");
+		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			System.out.println("Now returning to beginning prompt.");
 		}
 		return "";
 	}
