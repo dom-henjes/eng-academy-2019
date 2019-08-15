@@ -9,6 +9,7 @@ import org.jdbi.v3.core.Jdbi;
 import data.CompanyMapper;
 import model.Connector;
 import model.Employee;
+import model.Employee_Department;
 
 public class CommandDisplayDepartments implements Command{
 
@@ -25,10 +26,12 @@ public class CommandDisplayDepartments implements Command{
 		});
 		
 		for (Employee_Department employeeDepartment : employeeDepartments) {
-	    	System.out.println("Employee Department: " + employeeDepartments.getDepartment_name() );
+	    	System.out.println("Employee Department: " + employeeDepartment.getDepartment_name() );
+	    	System.out.println("Employee Name: " + employeeDepartment.getEmployee_name());
 //	    	System.out.println("Employee Employee Number: " + employee.getEmployeeNumber());
 	    	System.out.println("_____________");
 	    }
+		return "";
 		
 	}
 
