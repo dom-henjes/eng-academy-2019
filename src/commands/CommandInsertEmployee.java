@@ -75,7 +75,8 @@ public class CommandInsertEmployee implements Command {
 		    int success = jdbi.withHandle(handle -> {
 		    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
 		    	
-		    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(), emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary());
+		    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(),
+		    			emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary(), emp.getDepartmentID());
 		    	
 		    });
 		    

@@ -19,10 +19,10 @@ public interface CompanyMapper {
 	@RegisterBeanMapper(Employee.class)
 	List<Employee> getEmployeeByDepartment(String Department);
 	
-	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary) " +
-	"VALUES (?, ?, ?, ?, ?, ?, ?)")
+	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary, DepartmentID) " +
+	"VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
 	@RegisterBeanMapper(Employee.class)
-	int insertEmployee(String name, String address, String email, String NI, String bankAccount, String sortCode, float startingSalary);
+	int insertEmployee(String name, String address, String email, String NI, String bankAccount, String sortCode, float startingSalary, int DepartmentID);
 	
 	@SqlQuery("SELECT Department.Name AS Department_Name, Employee.Name AS Employee_Name FROM Employee JOIN Department ON Employee.DepartmentID = Department.DepartmentID ORDER BY Department.Name")
 	@RegisterBeanMapper(Employee_Department.class)

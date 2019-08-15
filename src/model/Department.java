@@ -8,7 +8,7 @@ public class Department {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void setID(int ID) {
+	public void setDepartmentID(int ID) {
 		departmentID = ID;
 	}
 	

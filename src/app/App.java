@@ -21,6 +21,7 @@ public class App {
 		commands.add(new CommandConnect());
 		commands.add(new CommandInsertEmployee());
 		commands.add(new CommandDisplayDepartments());
+//		commands.add(new CommandEmployeeDepartment());
 	
 		Scanner scanner = new Scanner(System.in);
 		

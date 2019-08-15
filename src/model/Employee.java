@@ -146,12 +146,14 @@ public class Employee {
 		boolean flag = false;
 		
 		for (Department d: depList) {
-			if (d.getName().toLowerCase().contentEquals(department)) {
+			System.out.println(d.getName());
+			if (d.getName().toLowerCase().equals(department.toLowerCase())) {
 				flag = true;
+				System.out.println("Successful " + d.getID());
 				departmentID = d.getID();
 			}
 		}
-		if (flag) {
+		if (!flag) {
 			throw new IOException("Invalid department name");
 		}
 	}
