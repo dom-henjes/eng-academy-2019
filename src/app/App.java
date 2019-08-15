@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import commands.Command;
 import commands.CommandConnect;
+import commands.CommandInsertEmployee;
 import commands.CommandSpike;
 import model.Connector;
 
@@ -16,6 +17,7 @@ public class App {
 	public App() {
 		commands.add(new CommandSpike());
 		commands.add(new CommandConnect());
+		commands.add(new CommandInsertEmployee());
 	
 		System.out.println("Please enter an option");
 		

@@ -17,9 +17,8 @@ public interface CompanyMapper {
 			+ "Department.DepartmentID WHERE Department.Name = ?")
 	List<Employee> getEmployeeByDepartment(String Department);
 	
-	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary)" +
+	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary) " +
 	"VALUES (?, ?, ?, ?, ?, ?, ?)")
 	@RegisterBeanMapper(Employee.class)
-	void insertEmployee(String name, String address, String email, String NI, String bankAccount, 
-			float startingSalary);		 
+	int insertEmployee(String name, String address, String email, String NI, String bankAccount, String sortCode, float startingSalary);		 
 }
