@@ -11,18 +11,15 @@ import model.Employee;
 public interface CompanyMapper {
 
 	@SqlQuery("SELECT Name FROM Employee WHERE Name = ?")
-	@RegisterBeanMapper(Employee.class)
 	Employee getEmployee(String codename);
 	
-	@SqlQuery("SELECT employeeNumber FROM Employee WHERE Department = ?")
-	@RegisterBeanMapper(Employee.class)
+	@SqlQuery("SELECT Employee.employeeNumber, Employee.Name FROM Employee JOIN Department ON Employee.DepartmentID = "
+			+ "Department.DepartmentID WHERE Department.Name = ?")
 	List<Employee> getEmployeeByDepartment(String Department);
 	
 	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary)" +
 	"VALUES (?, ?, ?, ?, ?, ?, ?)")
 	@RegisterBeanMapper(Employee.class)
 	void insertEmployee(String name, String address, String email, String NI, String bankAccount, 
-			float startingSalary);
-	
-		 
+			float startingSalary);		 
 }
