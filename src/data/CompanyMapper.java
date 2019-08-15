@@ -31,5 +31,12 @@ public interface CompanyMapper {
 	@SqlQuery("SELECT DepartmentID, Name FROM Department;")
 	@RegisterBeanMapper(Department.class)
 	List<Department> getDepartments();
+		
+	@SqlUpdate("INSERT INTO SalesEmployee(commision_rate, total_sales, employeeNumber) " +
+	"VALUES (?, ?, ?)")
+	@RegisterBeanMapper(Employee.class)
+	int insertSalesEmployee(double commision_rate,double total_sales, int employeeNumber);
+			
+	
 	
 }
