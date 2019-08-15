@@ -7,7 +7,7 @@ import model.Employee;
 
 public interface CompanyMapper {
 
-	@SqlQuery("SELECT name from Employee where name = ?")
+	@SqlQuery("SELECT name, NI from Employee where name = ?")
 	@RegisterBeanMapper(Employee.class)
 	Employee getEmployee(String codename);
 }
