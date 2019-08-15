@@ -75,8 +75,8 @@ public class Employee {
 
 	public void setNI(String nI) throws IOException {
 		if (nI.length() == 9) {
-			if (nI.matches("^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-DFM]{0,1}$\n")) {
-				this.NI = nI;
+			if (nI.toUpperCase().matches("^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D]{0,1}$")) {
+				this.NI = nI.toUpperCase();
 			} else {
 				throw new IOException("That is not a valid national insurance number");
 			}
