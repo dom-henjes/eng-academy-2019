@@ -6,8 +6,8 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import model.Employee;
 
 public interface CompanyMapper {
-
-	@SqlQuery("SELECT name, NI from Employee where name = ?")
+	
+	@SqlQuery("SELECT name from Employee where name = ?")
 	@RegisterBeanMapper(Employee.class)
 	Employee getEmployee(String codename);
 }
