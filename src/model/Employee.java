@@ -146,10 +146,8 @@ public class Employee {
 		boolean flag = false;
 		
 		for (Department d: depList) {
-			System.out.println(d.getName());
 			if (d.getName().toLowerCase().equals(department.toLowerCase())) {
 				flag = true;
-				System.out.println("Successful " + d.getID());
 				departmentID = d.getID();
 			}
 		}

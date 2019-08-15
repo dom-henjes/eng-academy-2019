@@ -8,17 +8,29 @@ import org.jdbi.v3.core.Jdbi;
 
 import data.CompanyMapper;
 import model.Connector;
+import model.Department;
 import model.Employee;
 
 public class CommandEmployeeDepartment implements Command {
 
 	@Override
 	public String handle() {
-		
+
+	    System.out.print("Enter the department from list: ");
+	    
 		Scanner scanner = new Scanner(System.in);
 		Jdbi jdbi = Connector.getConnector();
-
-	    System.out.print("Enter the department: ");
+		List<Department> depList = jdbi.withHandle(handle -> {
+	    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
+	    	
+	    	return companyMapper.getDepartments();
+	    });
+	    String deps = "";
+	    for (Department d: depList) {
+	    	deps = deps + d.getName() + ", " ;
+	    }
+	    System.out.println(deps);
+		
 
 	    String input = scanner.nextLine();
 	    
@@ -29,6 +41,9 @@ public class CommandEmployeeDepartment implements Command {
 				return companyMapper.getEmployeeByDepartment(input);
 			});
 		    
+		    if (employees.size() == 0) {
+		    	System.out.println("No employees in department.");
+		    }
 		    for (Employee employee : employees) {
 		    	System.out.println("Employee Name: " + employee.getName() );
 //		    	System.out.println("Employee Employee Number: " + employee.getEmployeeNumber());

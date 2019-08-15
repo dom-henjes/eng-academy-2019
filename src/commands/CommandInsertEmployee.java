@@ -62,7 +62,7 @@ public class CommandInsertEmployee implements Command {
 		    	
 		    	return companyMapper.getDepartments();
 		    });
-		    System.out.println("Enter employee  starting department from list: ");
+		    System.out.println("Enter employee starting department from list: ");
 		    String deps = "";
 		    for (Department d: depList) {
 		    	deps = deps + d.getName() + ", " ;
