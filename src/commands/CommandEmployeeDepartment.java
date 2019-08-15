@@ -33,6 +33,17 @@ public class CommandEmployeeDepartment implements Command {
 		
 
 	    String input = scanner.nextLine();
+	    boolean flag = false;
+	    for (Department d: depList) {
+	    	if (d.getName().equals(input)) {
+	    		flag = true; // found name, name is valid
+	    	}
+	    }
+	    
+	    if (!flag) {
+	    	System.out.println("Could not find department. Please check your spelling");
+	    	return "";
+	    }
 	    
 	    try {
 		    List<Employee> employees = jdbi.withHandle(handle -> {
