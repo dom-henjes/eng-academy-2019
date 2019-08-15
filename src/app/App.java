@@ -19,27 +19,45 @@ public class App {
 		commands.add(new CommandConnect());
 		commands.add(new CommandInsertEmployee());
 	
-		System.out.println("Please enter an option");
-		
 		Scanner scanner = new Scanner(System.in);
-
-	    System.out.println("Enter command: ");
+		
 	    boolean running = true;
-
+	    
+	    try {
 	    while(running){
 
+	    	System.out.println("\nPlease enter an option or quit to exit. Commands:");
+			for (Command command : commands) {
+				System.out.print(command.commandName() +  ", ");
+			}
+			
+			System.out.println("");
+			
+	    	
 	        String input = scanner.nextLine();
 	        
 	        if (input.equals("quit")) {
+	        	running = false;
+	        	System.out.println("Bye!");
 	        	System.exit(0);
 	        }
 	        
+	        boolean commandFound = false;
+	        
 	        for (Command command : commands) {
-	        	if (command.commandName().equals(input)) {
+	        	if (command.commandName().toUpperCase().equals(input.toUpperCase())) {
 	        		System.out.println(command.handle());
+	        		commandFound = true;
 	        		break;
 	        	}
 	        }
+	        
+	        if (!commandFound) {
+	        	System.out.println("Error: That is not a valid command\n");
+	        }
+	    }
+	    } catch (Exception e) {
+	    	System.out.println("Error: " + e.getMessage());
 	    }
 	    
 	    scanner.close();
