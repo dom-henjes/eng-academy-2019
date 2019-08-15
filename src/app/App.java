@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import commands.Command;
 import commands.CommandConnect;
+import commands.CommandDisplayDepartments;
 import commands.CommandInsertEmployee;
 import commands.CommandEmployeeDepartment;
 import commands.CommandSpike;
@@ -19,7 +20,7 @@ public class App {
 		commands.add(new CommandSpike());
 		commands.add(new CommandConnect());
 		commands.add(new CommandInsertEmployee());
-		commands.add(new CommandEmployeeDepartment());
+		commands.add(new CommandDisplayDepartments());
 	
 		Scanner scanner = new Scanner(System.in);
 		
