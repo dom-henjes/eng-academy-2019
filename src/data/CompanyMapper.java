@@ -7,6 +7,7 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import model.Employee;
+import model.Department;
 import model.Employee_Department;
 
 public interface CompanyMapper {
@@ -26,5 +27,9 @@ public interface CompanyMapper {
 	@SqlQuery("SELECT Department.Name AS Department_Name, Employee.Name AS Employee_Name FROM Employee JOIN Department ON Employee.DepartmentID = Department.DepartmentID ORDER BY Department.Name")
 	@RegisterBeanMapper(Employee_Department.class)
 	List<Employee_Department> getEmployeesForDepartments();
+	
+	@SqlQuery("SELECT DepartmentID, Name FROM Department;")
+	@RegisterBeanMapper(Department.class)
+	List<Department> getDepartments();
 	
 }

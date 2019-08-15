@@ -1,6 +1,7 @@
 package model;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Employee {
 	
@@ -141,14 +142,16 @@ public class Employee {
 		return departmentID;
 	}
 	
-	public void setDepartment(String department) throws IOException {
-		if (department.toLowerCase().equals("sales")) {
-			departmentID = 1;
-		} else if (department.toLowerCase().equals("accounting")) {
-			departmentID = 2;
-		} else if (department.toLowerCase().equals("manufacturing")) {
-			departmentID = 3;
-		} else {
+	public void setDepartment(String department, List<Department> depList) throws IOException {
+		boolean flag = false;
+		
+		for (Department d: depList) {
+			if (d.getName().toLowerCase().contentEquals(department)) {
+				flag = true;
+				departmentID = d.getID();
+			}
+		}
+		if (flag) {
 			throw new IOException("Invalid department name");
 		}
 	}
