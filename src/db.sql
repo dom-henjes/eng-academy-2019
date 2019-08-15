@@ -25,8 +25,8 @@ CONSTRAINT `fk_department` FOREIGN KEY (DepartmentID) REFERENCES Department(Depa
 
 CREATE TABLE SalesEmployee(
 salesEmployeeNumber int PRIMARY KEY AUTO_INCREMENT,
-commision_rate double(2,2) NOT NULL,
-total_sales float(2,2) NOT NULL,
+commision_rate double(4,2) NOT NULL,
+total_sales double(9,2) NOT NULL,
 employeeNumber INT NOT NULL,
 FOREIGN KEY (employeeNumber) REFERENCES Employee(employeeNumber)
 );
