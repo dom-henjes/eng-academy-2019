@@ -74,7 +74,12 @@ public class Employee {
 
 	public void setNI(String nI) throws IOException {
 		if (nI.length() == 9) {
-			this.NI = nI;
+			if (nI.matches("^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-DFM]{0,1}$\n")) {
+				this.NI = nI;
+			} else {
+				throw new IOException("That is not a valid national insurance number");
+			}
+		
 		} else {
 			throw new IOException("NI must have length 9.");
 		}
