@@ -18,7 +18,7 @@ Email varchar(150) NOT NULL,
 NI char(9) NOT NULL, 
 accountNumber char(8) NOT NULL, 
 sortCode char(6) NOT NULL, 
-startingSalary double(8,2) NOT NULL,
+startingSalary float(8,2) NOT NULL,
 DepartmentID INT NULL,
 CONSTRAINT `fk_department` FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
