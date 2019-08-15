@@ -7,6 +7,7 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import model.Employee;
+import model.Employee_Department;
 
 public interface CompanyMapper {
 
@@ -20,5 +21,10 @@ public interface CompanyMapper {
 	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary) " +
 	"VALUES (?, ?, ?, ?, ?, ?, ?)")
 	@RegisterBeanMapper(Employee.class)
-	int insertEmployee(String name, String address, String email, String NI, String bankAccount, String sortCode, float startingSalary);		 
+	int insertEmployee(String name, String address, String email, String NI, String bankAccount, String sortCode, float startingSalary);
+	
+	@SqlQuery("SELECT Department.Name AS Department_Name, Employee.Name AS Employee_Name FROM Employee JOIN Department ON Employee.DepartmentID = Department.DepartmentID ORDER BY Department.Name")
+	@RegisterBeanMapper(Employee_Department.class)
+	List<Employee_Department> getEmployeesForDepartments();
+	
 }
