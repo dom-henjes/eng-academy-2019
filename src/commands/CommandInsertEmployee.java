@@ -62,18 +62,18 @@ public class CommandInsertEmployee implements Command {
 	    emp.setSortcode(sortCode);
 	    emp.setStartingSalary(Float.parseFloat(startingSalary));
 	    
-	    jdbi.withHandle(handle -> {
+	    int success = jdbi.withHandle(handle -> {
 	    	CompanyMapper companyMapper = handle.attach(CompanyMapper.class);
 	    	
-	    	companyMapper.insertEmployee(emp);
+	    	return companyMapper.insertEmployee(emp.getName(), emp.getAddress(), emp.getEmail(), emp.getNI(), emp.getBankAccount(), emp.getSortcode(), emp.getStartingSalary());
 	    	
-	    	return "";
 	    });
 	    
+	    System.out.println("Success: " + success);
 		
 		}
 		catch(Exception e) {
-			System.out.println("Error");
+			e.printStackTrace();
 		}
 		return "";
 	}

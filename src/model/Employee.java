@@ -2,14 +2,14 @@ package model;
 
 public class Employee {
 	
-	private String name;
-	private String address;
-	private String email;
-	private String NI;
-	private String bankAccount;
-	private String sortcode;
-	private float startingSalary;
-	private int employeeNumber;
+	public String name;
+	public String address;
+	public String email;
+	public String NI;
+	public String bankAccount;
+	public String sortcode;
+	public float startingSalary;
+	public int employeeNumber;
 	
 	public Employee(String name, String address, String email, String NI, String bankAccount,
 			String sortCode, float startingSalary) {
@@ -22,6 +22,10 @@ public class Employee {
 		this.setStartingSalary(startingSalary);
 	}
 	
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getName() {
 		return name;
 	}

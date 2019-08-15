@@ -40,8 +40,6 @@ public class Connector {
 				System.err.println("Failed to find config file for DB connection.");
 			} catch (IOException e) {
 				System.err.println("Config file for DB connection could not be loaded properly.");
-			} catch (SQLException e) {
-				System.out.println("Database could not be reached. Please try again later or contact Database Administrator");
 			}
 		}
 		return conn;
