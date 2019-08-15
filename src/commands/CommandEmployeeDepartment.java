@@ -31,7 +31,7 @@ public class CommandEmployeeDepartment implements Command {
 		    
 		    for (Employee employee : employees) {
 		    	System.out.println("Employee Name: " + employee.getName() );
-		    	System.out.println("Employee Name: " + employee.getEmployeeNUmber());
+//		    	System.out.println("Employee Employee Number: " + employee.getEmployeeNumber());
 		    	System.out.println("_____________");
 		    }
 		    

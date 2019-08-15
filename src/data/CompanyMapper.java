@@ -13,8 +13,8 @@ public interface CompanyMapper {
 	@SqlQuery("SELECT Name FROM Employee WHERE Name = ?")
 	Employee getEmployee(String codename);
 	
-	@SqlQuery("SELECT Employee.employeeNumber, Employee.Name FROM Employee JOIN Department ON Employee.DepartmentID = "
-			+ "Department.DepartmentID WHERE Department.Name = ?")
+	@SqlQuery("SELECT Employee.employeeNumber, Employee.Name FROM Employee JOIN Department ON Employee.DepartmentID = Department.DepartmentID WHERE Department.Name = ?")
+	@RegisterBeanMapper(Employee.class)
 	List<Employee> getEmployeeByDepartment(String Department);
 	
 	@SqlUpdate("INSERT INTO Employee (Name, Address, Email, NI, accountNumber, sortCode, startingSalary) " +

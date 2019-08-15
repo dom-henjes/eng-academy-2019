@@ -6,11 +6,8 @@ import java.util.Scanner;
 
 import commands.Command;
 import commands.CommandConnect;
-<<<<<<< HEAD
 import commands.CommandInsertEmployee;
-=======
 import commands.CommandEmployeeDepartment;
->>>>>>> Employees Department frontend
 import commands.CommandSpike;
 import model.Connector;
 
@@ -21,11 +18,8 @@ public class App {
 	public App() {
 		commands.add(new CommandSpike());
 		commands.add(new CommandConnect());
-<<<<<<< HEAD
 		commands.add(new CommandInsertEmployee());
-=======
 		commands.add(new CommandEmployeeDepartment());
->>>>>>> Employees Department frontend
 	
 		System.out.println("Please enter an option");
 		
